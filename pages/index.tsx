@@ -13,52 +13,46 @@ type IndexProps = {
 export const Index = ({ posts }: IndexProps): JSX.Element => {
   return (
     <Layout>
-      <h1>Home Page</h1>
-      <p>Next.js starter for your next blog or personal site. Built with:</p>
-      <ul className="list-disc pl-4 my-6">
-        <li>Next.js</li>
-        <li className="mt-2">Typescript</li>
-        <li className="mt-2">MDX</li>
-        <li className="mt-2">Tailwind CSS</li>
-      </ul>
+      <section className="pb-8">
+        <h1>Hey there👋,</h1>
+        <p className="text-lg">
+          Shlok is a software developer, dreamer, and an adventure seeker. He
+          loves working on challenging problems. He is currently pursuing
+          Bachelor's degree in Computer Applications from LJ University,
+          Ahmedabad.
+        </p>
+      </section>
 
-      <a
-        href="https://github.com/ChangoMan/nextjs-typescript-mdx-blog"
-        className="inline-block px-7 py-3 rounded-md text-white dark:text-white bg-blue-600 hover:bg-blue-700 hover:text-white dark:hover:text-white"
-      >
-        Get the source code!
-      </a>
+      <section className="pt-2">
+        <h1>Projects</h1>
+        <hr className="pb-4"></hr>
+        <Link href="https://github.com/Shlok11/rocket-api-testing">
+          <a className="text-black text-2xl font-semibold underline">Rocket🚀</a>
+        </Link>
 
-      {posts.map((post) => (
-        <article key={post.slug} className="mt-12">
-          <p className="mb-1 text-sm text-gray-500 dark:text-gray-400">
-            {format(parseISO(post.date), 'MMMM dd, yyyy')}
-          </p>
-          <h1 className="mb-2 text-xl">
-            <Link as={`/posts/${post.slug}`} href={`/posts/[slug]`}>
-              <a className="text-gray-900 dark:text-white dark:hover:text-blue-400">
-                {post.title}
-              </a>
-            </Link>
-          </h1>
-          <p className="mb-3">{post.description}</p>
-          <p>
-            <Link as={`/posts/${post.slug}`} href={`/posts/[slug]`}>
-              <a>Read More</a>
-            </Link>
-          </p>
-        </article>
-      ))}
+        <p className="text-lg">
+        Rocket makes API development uncomplicated. It's a platform for building and testing your APIs. Built using Vanilla Javascript, Rocket allows users to create HTTP/s requests, as well as read their responses.
+        </p>
+
+        <Link href="https://github.com/Shlok11/URL-Shortener">
+          <a className="text-black text-2xl font-semibold underline">
+            Shortzy - URL Shortner
+          </a>
+        </Link>
+
+        <p className="text-lg">
+        Developed Shortzy using Node.js, Express, and MongoDB. Shortzy shrinks the length of the URL and makes it Short and Sweet.
+        </p>
+        <Link href="https://github.com/Shlok11/meetup-react-app/tree/master">
+          <a className="text-black text-2xl font-semibold underline">Meetup</a>
+        </Link>
+
+        <p className="text-lg">
+        Built using React.js and Firebase.Meetup is a CRUD Application where users can add New Meetups, add their favorite meetups to their favorite page.
+        </p>
+      </section>
     </Layout>
   );
-};
-
-export const getStaticProps: GetStaticProps = async () => {
-  const posts = getAllPosts(['date', 'description', 'slug', 'title']);
-
-  return {
-    props: { posts },
-  };
 };
 
 export default Index;
